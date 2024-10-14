@@ -120,8 +120,25 @@ QPushButton:pressed {
         <height>25</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QProgressBar {
+    border: 2px solid #8DCEA6; /* 绿色边框 */
+    border-radius: 5px;        /* 圆角 */
+    text-align: center;        /* 文字居中显示 */
+    height: 20px;              /* 设置进度条的高度 */
+}
+
+QProgressBar::chunk {
+    background-color: #6ABD7E; /* 绿色进度块 */
+    width: 10px;               /* 每个进度块的宽度 */
+    margin: 1px;               /* 块之间的间距 */
+}</string>
+      </property>
       <property name="value">
        <number>0</number>
+      </property>
+      <property name="textVisible">
+       <bool>false</bool>
       </property>
      </widget>
     </item>

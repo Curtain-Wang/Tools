@@ -20,8 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setWindowIcon(QIcon(":/icons/images/icon.webp"));
     ui->pushButton->setEnabled(false);
-    ui->progressBar->setFixedHeight(25);
-
 }
 
 MainWindow::~MainWindow()
