@@ -323,7 +323,7 @@ void MainWindow::on_btnUpld_clicked()
         QXlsx::Document xlsx(filePath);
 
         QString tag = "以下是一个路口雷达配置的示例(灰色部分),可参照该示例进行配置";
-        if(tag != xlsx.read(1, 1).toString())
+        if(!xlsx.read(1, 1).toString().startsWith(tag))
         {
             QMessageBox::warning(this, "错误", "请导入下载下来的模板！");
             return;
@@ -343,6 +343,7 @@ void MainWindow::on_btnUpld_clicked()
         total = 0;
         success = 0;
         failed = 0;
+        covered = 0;
         while (true) {
             // 读取路口名称，若为空则保持前一个路口名称
             QString currentJunctionName = xlsx.read(startRow, 1).toString();
@@ -372,6 +373,10 @@ void MainWindow::on_btnUpld_clicked()
 
             // 如果没有更多数据（雷达安装位置为空），则退出循环
             if (radarPosition.isEmpty()) {
+                if(total == 0)
+                {
+                    printDetail(QString("没有解析出雷达信息, 请确认雷达信息是否从第%1开始写入").arg(startRow));
+                }
                 break;
             }
 
