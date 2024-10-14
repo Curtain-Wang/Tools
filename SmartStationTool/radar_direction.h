@@ -14,7 +14,8 @@ public:
         D1 = 5,
         D2 = 6,
         D3 = 7,
-        D4 = 8
+        D4 = 8,
+        UNKNOW = 9
     };
 
     // 静态函数：根据字符串返回对应的枚举值
@@ -27,11 +28,12 @@ public:
             {"方向一", D1},
             {"方向二", D2},
             {"方向三", D3},
-            {"方向", D4}
+            {"方向四", D4},
+            {"未知", UNKNOW}
         };
 
         // 默认返回 EAST，如果找不到对应的方向
-        return directionMap.value(directionStr, EAST);
+        return directionMap.value(directionStr, UNKNOW);
     }
 
     // 静态函数：返回方向枚举的整数值
